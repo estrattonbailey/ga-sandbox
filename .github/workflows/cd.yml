@@ -1,0 +1,35 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PNPM_CACHE_FOLDER: .pnpm-store
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        workerDirectory:
+          - workers/a
+          - workers/b
+
+    steps:
+      # env stuff
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: node - setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+
+      - name: run deploy
+        run: echo ${{ matrix.workerDirectory }}
