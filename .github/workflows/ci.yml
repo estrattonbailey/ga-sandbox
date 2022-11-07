@@ -42,7 +42,7 @@ jobs:
     name: Other
     runs-on: ubuntu-latest
     needs: deploy
-    if: ${{ env.CHANGES_DETECTED }}
+    if: github.env.CHANGES_DETECTED
 
     steps:
       - name: maybe
