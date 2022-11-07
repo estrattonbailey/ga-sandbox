@@ -32,7 +32,7 @@ jobs:
           node-version: 14.x
 
       - name: diff changes
-        run: echo "CHANGES_DETECTED=$(git diff origin/main --name-only ${{matrix.workerDirectory}})" >> $GITHUB_ENV
+        run: echo "CHANGES_DETECTED=$(git diff HEAD~1 --name-only ${{matrix.workerDirectory}})" >> $GITHUB_ENV
 
       - name: deploy
         uses: cloudflare/wrangler-action@2.0.0
