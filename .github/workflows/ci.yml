@@ -37,3 +37,12 @@ jobs:
       - name: conditional
         if: env.CHANGES_DETECTED
         run: echo "YAYY"
+
+  other:
+    name: Other
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: conditional
+        if: env.CHANGES_DETECTED
+        run: echo "other"
