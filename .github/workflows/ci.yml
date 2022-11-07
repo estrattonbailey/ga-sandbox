@@ -12,7 +12,6 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    id: deploy
 
     strategy:
       matrix:
