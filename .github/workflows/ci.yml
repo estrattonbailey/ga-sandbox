@@ -1,0 +1,36 @@
+name: CD
+
+on:
+  pull_request:
+    branches:
+      - '**'
+
+env:
+  PNPM_CACHE_FOLDER: .pnpm-store
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        workerDirectory:
+          - workers/a
+          - workers/b
+
+    steps:
+      # env stuff
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: node - setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+
+      - name: conditional
+        if: git diff origin/main matrix.workerDirectory
+        run: echo 'true'
