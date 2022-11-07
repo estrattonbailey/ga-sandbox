@@ -38,7 +38,7 @@ jobs:
         run: test -e 'workers/a/package.json' && echo 'HAS_PACKAGE_JSON=true' >> $GITHUB_ENV || echo 'Invalid package'
 
       - name: Detect changes
-        run: echo "CHANGES_DETECTED=\"$(git diff HEAD~1 --name-only ${{matrix.workerDirectory}})\"" >> $GITHUB_ENV
+        run: echo "CHANGES_DETECTED=$(git diff HEAD~1 --name-only ${{matrix.workerDirectory}})" >> $GITHUB_ENV
 
       - name: Report deployments
         if: env.CHANGES_DETECTED
