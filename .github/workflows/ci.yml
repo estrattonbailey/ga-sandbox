@@ -41,8 +41,9 @@ jobs:
   other:
     name: Other
     runs-on: ubuntu-latest
+    needs: deploy
+    if: env.CHANGES_DETECTED
 
     steps:
-      - name: conditional
-        if: env.CHANGES_DETECTED
+      - name: maybe
         run: echo "other"
