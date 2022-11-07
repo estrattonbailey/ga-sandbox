@@ -35,7 +35,7 @@ jobs:
           node-version: 14.x
 
       - name: Has package.json
-        run: test -e 'workers/package.json' && echo 'HAS_PACKAGE_JSON=true' >> $GITHUB_ENV || echo 'Invalid package'
+        run: test -e 'workers/a/package.json' && echo 'HAS_PACKAGE_JSON=true' >> $GITHUB_ENV || echo 'Invalid package'
 
       - name: Detect changes
         run: echo "CHANGES_DETECTED=\"$(git diff HEAD~1 --name-only ${{matrix.workerDirectory}})\"" >> $GITHUB_ENV
