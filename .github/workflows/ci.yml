@@ -20,7 +20,7 @@ jobs:
           - workers/b
 
     outputs:
-      CHANGED_WORKERS: ''
+      CHANGED_WORKERS: ${{ steps.reporter.outputs.CHANGED_WORKERS }}
 
     steps:
       # env stuff
@@ -54,4 +54,3 @@ jobs:
     steps:
       - name: report
         run: echo "${{ needs.deploy.steps.reporter.outputs.CHANGED_WORKERS }}" >> $GITHUB_STEP_SUMMARY
-
