@@ -39,7 +39,7 @@ jobs:
 
       - name: Report deployments
         if: env.CHANGES_DETECTED
-        run: echo "${{ matrix.workerDirectory }}:" >> $CHANGED_WORKERS
+        run: echo "CHANGED_WORKERS=$CHANGED_WORKERS:${{ matrix.workerDirectory }}" >> $GITHUB_OUTPUT
         # run: echo "- ${{ matrix.workerDirectory }}" >> $GITHUB_STEP_SUMMARY
 
   report:
