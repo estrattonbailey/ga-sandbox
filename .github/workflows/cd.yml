@@ -30,9 +30,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 14.x
-          
-      - name: cd
-        run: cd ${{ matrix.workerDirectory }}
 
-      - name: pwd
-        run: pwd
+      - name: conditional
+        if: git diff origin/main matrix.workerDirectory
+        run: echo 'true'
