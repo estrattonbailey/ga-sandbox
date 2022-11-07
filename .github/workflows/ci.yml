@@ -40,7 +40,7 @@ jobs:
       - name: Report deployments
         id: reporter
         if: env.CHANGES_DETECTED
-        run: echo -e "CHANGED_WORKERS=$CHANGED_WORKERS\n- ${{ matrix.workerDirectory }}" >> $GITHUB_OUTPUT
+        run: echo -e 'CHANGED_WORKERS=$CHANGED_WORKERS\n- ${{ matrix.workerDirectory }}' >> $GITHUB_OUTPUT
         # run: echo "- ${{ matrix.workerDirectory }}" >> $GITHUB_STEP_SUMMARY
 
   report:
@@ -50,4 +50,4 @@ jobs:
 
     steps:
       - name: report
-        run: echo -e "### Changed workers\n${{ needs.deploy.outputs.CHANGED_WORKERS }}" >> $GITHUB_STEP_SUMMARY
+        run: echo -e '### Changed workers\n${{ needs.deploy.outputs.CHANGED_WORKERS }}' >> $GITHUB_STEP_SUMMARY
