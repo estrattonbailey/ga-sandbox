@@ -38,6 +38,7 @@ jobs:
         run: echo "CHANGES_DETECTED=$(git diff HEAD~1 --name-only ${{matrix.workerDirectory}})" >> $GITHUB_ENV
 
       - name: Report deployments
+        id: reporter
         if: env.CHANGES_DETECTED
         run: echo "CHANGED_WORKERS=$CHANGED_WORKERS:${{ matrix.workerDirectory }}" >> $GITHUB_OUTPUT
         # run: echo "- ${{ matrix.workerDirectory }}" >> $GITHUB_STEP_SUMMARY
@@ -49,5 +50,5 @@ jobs:
 
     steps:
       - name: report
-        run: echo "${{ needs.deploy.outputs.CHANGED_WORKERS }}" >> $GITHUB_STEP_SUMMARY
+        run: echo "${{ needs.deploy.steps.reporter.outputs.CHANGED_WORKERS }}" >> $GITHUB_STEP_SUMMARY
 
