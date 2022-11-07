@@ -31,9 +31,6 @@ jobs:
         with:
           node-version: 14.x
 
-      - name: detect
-        run: 
-
       - name: conditional
         env:
           EDITED: git diff origin/main --name-only ${{matrix.workerDirectory}}
