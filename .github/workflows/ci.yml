@@ -53,4 +53,4 @@ jobs:
 
     steps:
       - name: report
-        run: echo "${{ needs.deploy.steps.reporter.outputs.CHANGED_WORKERS }}" >> $GITHUB_STEP_SUMMARY
+        run: echo "${{ needs.deploy.outputs.CHANGED_WORKERS }}" >> $GITHUB_STEP_SUMMARY
