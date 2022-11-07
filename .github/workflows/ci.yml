@@ -32,7 +32,9 @@ jobs:
           node-version: 14.x
 
       - name: detect
-        run: EDITED=$(git diff origin/main ${{matrix.workerDirectory}})
+        run: 
 
       - name: conditional
-        run: echo $EDITED
+        env:
+          EDITED: git diff origin/main --name-only ${{matrix.workerDirectory}}
+        run: echo "$EDITED"
