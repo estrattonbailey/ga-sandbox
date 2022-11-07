@@ -31,19 +31,11 @@ jobs:
         with:
           node-version: 14.x
 
-      - name: set
+      - name: diff changes
         run: echo "CHANGES_DETECTED=$(git diff origin/main --name-only ${{matrix.workerDirectory}})" >> $GITHUB_ENV
 
-      - name: conditional
+      - name: deploy
+        uses: cloudflare/wrangler-action@2.0.0
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
         if: env.CHANGES_DETECTED
-        run: echo "YAYY"
-
-  other:
-    name: Other
-    runs-on: ubuntu-latest
-    needs: deploy
-    # if: github.env.CHANGES_DETECTED
-
-    steps:
-      - name: maybe
-        run: echo ${{ github.env }}
