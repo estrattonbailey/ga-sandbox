@@ -35,7 +35,5 @@ jobs:
         run: echo "CHANGES_DETECTED=$(git diff origin/main --name-only ${{matrix.workerDirectory}})" >> $GITHUB_ENV
 
       - name: deploy
-        uses: cloudflare/wrangler-action@2.0.0
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
         if: env.CHANGES_DETECTED
+        run: echo 'will deploy'
