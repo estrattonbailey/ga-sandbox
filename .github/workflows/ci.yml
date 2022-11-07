@@ -39,4 +39,4 @@ jobs:
 
       - name: Report deployments
         if: env.CHANGES_DETECTED
-        run: echo "Worker `${{ matrix.workerDirectory }}` will deploy upon merge" >> $GITHUB_STEP_SUMMARY
+        run: echo "Worker ${{ matrix.workerDirectory }} will deploy upon merge" >> $GITHUB_STEP_SUMMARY
