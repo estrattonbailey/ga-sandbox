@@ -12,6 +12,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    id: deploy
 
     strategy:
       matrix:
@@ -43,6 +44,9 @@ jobs:
         run: echo "CHANGED_WORKERS=$CHANGED_WORKERS:${{ matrix.workerDirectory }}" >> $GITHUB_OUTPUT
         # run: echo "- ${{ matrix.workerDirectory }}" >> $GITHUB_STEP_SUMMARY
 
+      - name: report
+        run: echo "${{ steps.reporter.outputs.CHANGED_WORKERS }}" >> $GITHUB_STEP_SUMMARY
+
   report:
     name: Report
     runs-on: ubuntu-latest
@@ -50,5 +54,5 @@ jobs:
 
     steps:
       - name: report
-        run: echo "${{ steps.reporter.outputs.CHANGED_WORKERS }}" >> $GITHUB_STEP_SUMMARY
+        run: echo "${{ needs.deploy.steps.reporter.outputs.CHANGED_WORKERS }}" >> $GITHUB_STEP_SUMMARY
 
