@@ -33,5 +33,5 @@ jobs:
 
       - name: conditional
         env:
-          EDITED: git diff origin/main --name-only ${{matrix.workerDirectory}}
+          EDITED: $(git diff origin/main --name-only ${{matrix.workerDirectory}})
         run: echo "$EDITED"
