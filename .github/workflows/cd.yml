@@ -31,7 +31,7 @@ jobs:
         with:
           node-version: 14.x
 
-      - name: diff changes
+      - name: Detect changes
         run: echo "CHANGES_DETECTED=$(git diff HEAD~1 --name-only ${{matrix.workerDirectory}})" >> $GITHUB_ENV
 
       - name: deploy
